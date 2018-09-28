@@ -3,6 +3,6 @@ var Messages = {
     username: username,
     message: message,
     roomname: roomname,
-    createdAt: Date.now();
-    updatedAt: Date.now();
+    createdAt: Date.now(),
+    updatedAt: Date.now()
 };
