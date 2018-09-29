@@ -3,7 +3,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
-
+  
   initialize: function() {
     App.username = window.location.search.substr(10);
 
@@ -20,7 +20,7 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      //console.log(data);
 
       callback();
     });

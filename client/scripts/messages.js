@@ -1,8 +1,7 @@
 var Messages = {
-    // createdAt: new Date().toISOString(),
-    // //objectId: undefined,
-    // //roomname: roomname,
+    //This is a Message model
+    // username: username,
     // text: text,
-    // updatedAt: new Date().toISOString(),
-    // username: username
+    // roomname: roomname
+
 };

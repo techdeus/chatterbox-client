@@ -10,8 +10,16 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
     // get the text from userinput
-    // escape characters to prevent XSS
+
+    var userText = $('input:text').val();
+    var userName = App.username;
+    var roomName = Rooms.roomName;
+    // create a message object
+    var messageObject = { username: userName, text: userText, roomname: roomName};
     // AJAX call from Parse.create, to create message
+    console.log(messageObject);
+    Parse.create(messageObject);
+    
       // check if message was a success
         // if success
           // render messages view
