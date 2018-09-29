@@ -1,10 +1,8 @@
 var Messages = {
-    createdAt: Date.now(),
-    objectId: objectId,
-    roomname: roomname,
-    text: text,
-    updatedAt: Date.now(),
-    username: username
-
-    
+    // createdAt: new Date().toISOString(),
+    // //objectId: undefined,
+    // //roomname: roomname,
+    // text: text,
+    // updatedAt: new Date().toISOString(),
+    // username: username
 };
