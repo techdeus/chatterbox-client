@@ -1,8 +1,10 @@
 var Messages = {
-    id: id,
-    username: username,
-    message: message,
-    roomname: roomname,
     createdAt: Date.now(),
-    updatedAt: Date.now()
+    objectId: objectId,
+    roomname: roomname,
+    text: text,
+    updatedAt: Date.now(),
+    username: username
+
+    
 };
