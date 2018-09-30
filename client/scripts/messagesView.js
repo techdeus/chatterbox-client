@@ -29,11 +29,11 @@ var MessagesView = {
     // });
     // //setInterval(MessagesView.initialize.bind(this), 3000);
  
-  },
+  }, 
 
   render: function() { 
     // call readAll to get messages
-    console.log("render");
+    // console.log("render");
     MessagesView.$chats.html(''); // empty the messages
     Messages
       .items()
@@ -68,7 +68,7 @@ var MessagesView = {
   renderMessage: function(message) {
     
     var $message = MessageView.render(message);
-console.log($message);
+    // console.log($message);
     MessagesView.$chats.prepend($message);
   },
 

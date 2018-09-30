@@ -64,15 +64,12 @@ var RoomsView = {
   },
 
   handleClick: function(event) {
-    var roomname = $('#roomname').val();
+    var roomname = prompt('Enter room name');
     if (roomname) {
       Rooms.add(roomname, () => {
         RoomsView.render();
         MessagesView.render();
       });
     }
-  
-    }
-  
-
+  }
 };

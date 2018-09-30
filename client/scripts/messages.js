@@ -8,18 +8,18 @@ var Messages = {
 
     add: function(messages, callback = () => {}) {
       Messages._data[message.objectId] = message;
-      callback();
+      callback(Messages.items());
     }, 
 
     update: function(messages, callback = () => {}) {
       var length = Object.keys(Messages._data).length;
-      console.log(length);
+      // console.log(length);
       for ( let message of messages ) {
         Messages._data[messages.objectId] = Messages._conform(message);
       }
       if (Object.keys(Messages._data).length !== length) {
-      console.log("Call");
-        callback();
+      
+        callback(Messages.items());
       }
     }, 
 
@@ -30,4 +30,4 @@ var Messages = {
       
       return message;
     }
-};
+}; 

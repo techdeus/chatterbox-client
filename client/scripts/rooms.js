@@ -15,30 +15,23 @@ var Rooms = {
       Rooms._data.add(room);
       Rooms.selected = room;
       callback(Rooms.items());
-    }, 
+  }, 
 
   update: function(messages, callback = () => {}) {
-      var length = Rooms._data.size;
+    var length = Rooms._data.size;
 
-      _.chain(messages)
-        .pluck('roomname')
-        .uniq()
-        .each(room => Rooms._data.add(room));
+    _.chain(messages)
+      .pluck('roomname')
+      .uniq()
+      .each(room => Rooms._data.add(room));
 
-      if ( Rooms.selected === null ) {
+    if ( Rooms.selected === null ) {
         Rooms.selected = Rooms._data.values().next().value;
-      }
+    }
 
-
-      if ( Rooms._data.size !== length ) {
-        callback();
-      }
-    }, 
-
-
-
-
-
-
+    if ( Rooms._data.size !== length ) {
+        callback(Rooms.items());
+    }
+  }
 
 };
