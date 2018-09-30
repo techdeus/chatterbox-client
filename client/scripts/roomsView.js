@@ -2,49 +2,77 @@ var RoomsView = {
 
   $button: $('#rooms button'),
   $select: $('#rooms select'),
-  roomNames: undefined,
+  
   initialize: function() {
     //Call Ajax for messages
+    RoomsView.$select.on('change', RoomsView.handleChange);
+    RoomsView.$button.on('click', RoomsView.handleClick);
+
+    // Parse.readAll(function(messagesJSON){
+    //   //_.filter messages with full properties
     
-    Parse.readAll(function(messagesJSON){
-      //_.filter messages with full properties
-    
-      var filtJSONResults = _.filter(messagesJSON.results, function(messageObject) {
-        return messageObject.username && messageObject.text && messageObject.roomname;
-      });
+    //   var filtJSONResults = _.filter(messagesJSON.results, function(messageObject) {
+    //     return messageObject.username && messageObject.text && messageObject.roomname;
+    //   });
       
-      console.log("----------------");
-      console.log(filtJSONResults);  
-      console.log("----------------");
-      //For each message object, 
+    
+    //   //For each message object, 
      
-      //create a set for roomname
-      var set = new Set();
-      _.each(filtJSONResults, function(message, i) {
-        set.add(message[i].roomname);       
-      });
-      
-      console.log(set);
-      this.roomNames = set;
-    });
+    //   //create a set for roomname
+    //   var set = new Set();
+    //   _.each(filtJSONResults, function(message, i) {
+    //     // console.log("IM INSIDE of EACH")
+    //     set.add(message.roomname);       
+    //   });
+    //   RoomsView.roomNames = set;
+    // });
     
-    RoomsView.generateRoomOptions();
+    // setTimeout(RoomsView.generateRoomOptions.bind(this), 1000);
+    
+    // $('option').on('click', function(selected){
+    //     MessagesView.selectRoom(selected.text());
+    // });
+
+    // $('#btnAddRoom').click(function(){
+
+    //   RoomsView.addRoom();
+    //   });
   },
 
-  render: function() {
-    _.template(`
-        <option value="<%= _.escape(roomname) %>"><%= _.escape(roomname) %></option>
-      `,  settings
-      )
+  render: function() { 
+    
+    RoomsView.$select.html('');
+    Rooms
+      .items()
+      .each(RoomsView.renderRoom);
+    RoomsView.$select.val(Rooms.selected);
+    // _.template(`
+    //     <option value="<%- roomname %>"><%- roomname %></option>
+    //   `
+    //   )
+
   },
 
-  generateRoomOptions: function(){
-    for(var i = 0; i < this.roomNames.length; i++){
-      var optionTemplate = render({roomname: this.roomNames[i]});
-      $select.append(optionTemplate)
+  renderRoom: function(roomname) {
+    var $option = $('<option>').val(roomname).text(roomname);
+    RoomsView.$select.append($option);
+  }, 
+
+  handleChange: function(event) {
+    Rooms.selected = RoomsView.$select.val();
+    MessagesView.render();  
+  },
+
+  handleClick: function(event) {
+    var roomname = $('#roomname').val();
+    if (roomname) {
+      Rooms.add(roomname, () => {
+        RoomsView.render();
+        MessagesView.render();
+      });
     }
-  }
-
+  
+    }
   
 
 };

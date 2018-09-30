@@ -5,11 +5,22 @@ body {
     font-family: arial, sans-serif;
 }
 
-#main, #chats {
+#main {
+    width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: left;
+    background: rgb(238, 242, 245);
+    padding: 50px 60px;
+    border: solid #ddd;
+    border-width: 0 1px 1px 1px;
+}
+
+#chats {
     width: 500px;
     margin: auto;
     text-align: left;
-    background: white;
+    background: rgb(255,250,250);
     padding: 50px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
@@ -18,8 +29,10 @@ body {
 #main h1 {
     margin-top: 0;
     font-size: 35px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     padding: 5px;
+    text-align: center;
+    color: cornflowerblue;
 }
 
 #main h1 span {
@@ -59,6 +72,17 @@ form input[type=text] {
     padding: 5px;
 }
 
+#rooms {
+    float: left;
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+
+#roomname {
+    width: 40%;
+}
+
 .chat {
     padding: 5px;
     margin-bottom: 5px;
@@ -93,3 +117,8 @@ form input[type=text] {
     font-size: 12px;
     color: olive;
 }
+
+#formContainer {
+    margin: 20px;
+}
+

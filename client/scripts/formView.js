@@ -8,25 +8,32 @@ var FormView = {
 
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
-    event.preventDefault();
-    // get the text from userinput
-
-    var userText = $('input:text').val();
-    var userName = App.username;
-    var roomName = Rooms.roomName;
-    // create a message object
-    var messageObject = { username: userName, text: userText, roomname: roomName};
-    // AJAX call from Parse.create, to create message
-    console.log(messageObject);
-    Parse.create(messageObject);
+    // event.preventDefault();
     
-      // check if message was a success
-        // if success
-          // render messages view
-        // if not
-          // console.log the error
 
-    console.log('click!');
+    var message = {
+      username: App.username, 
+      text: FormView.$form.find('#message').val(),
+      roomname: Rooms.selected || 'lobby'
+    };
+    console.log(message);
+    Parse.create(message, (data) => {
+      _.extend(message, data);
+      Messages.add(message, MessagesView.render);
+      });
+
+    // // get the text from userinput
+
+    // var userText = $('#message').val();
+    // var userName = App.username;
+    // var roomName = $('#dropdown option:selected').text();
+    // // create a message object
+    // var messageObject = { username: userName, text: userText, roomname: roomName};
+    // // AJAX call from Parse.create, to create message
+    // console.log(messageObject);
+    // Parse.create(messageObject);
+    
+    // MessagesView.render();
   },
 
   setStatus: function(active) {
